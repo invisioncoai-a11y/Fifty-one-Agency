@@ -1,0 +1,125 @@
+/* CTA Section Styles */
+.cta-section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.cta-banner {
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, rgba(13, 17, 26, 0.95) 75%);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: var(--radius-xl);
+  padding: 70px 40px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(99, 102, 241, 0.15);
+}
+
+.cta-ambient-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 250px;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.84rem;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+}
+
+.cta-sparkle {
+  color: var(--accent-cyan);
+}
+
+.cta-title {
+  font-size: clamp(2.2rem, 4.2vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.cta-gradient-text {
+  background: linear-gradient(135deg, #ffffff 30%, #818cf8 70%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta-desc {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 620px;
+}
+
+.cta-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.cta-btn-large {
+  padding: 16px 36px;
+  font-size: 1.02rem;
+}
+
+.cta-subtext-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.cta-sub-bullet {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 640px) {
+  .cta-section {
+    padding: 60px 0;
+  }
+
+  .cta-banner {
+    padding: 40px 20px;
+  }
+
+  .cta-subtext-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cta-sub-bullet {
+    display: none;
+  }
+}
