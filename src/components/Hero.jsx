@@ -1,9 +1,11 @@
 import React from 'react';
-import { ArrowRight, ChevronRight, Terminal, Cpu, ShieldCheck, Zap, Sparkles } from 'lucide-react';
-import { BRAND_CONFIG, TRUST_TAGS, HERO_METRICS } from '../data/agencyData';
+import { ArrowRight, ChevronRight, Terminal, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/hero.css';
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   const handleScrollTo = (e, targetId) => {
     e.preventDefault();
     const el = document.getElementById(targetId);
@@ -24,20 +26,19 @@ export default function Hero() {
         <div className="hero-content">
           <div className="hero-pill-badge">
             <span className="pill-pulse" />
-            <span className="pill-text">Software • AI • Web • Mobile</span>
+            <span className="pill-text">{t.hero.pillCategory}</span>
             <span className="pill-separator">•</span>
-            <span className="pill-status">{BRAND_CONFIG.status}</span>
+            <span className="pill-status">{t.hero.pillStatus}</span>
           </div>
 
           <h1 className="hero-title">
-            Engineering Next-Gen <br />
-            <span className="hero-gradient-text">Digital Systems</span> <br />
-            &amp; AI Solutions.
+            {t.hero.titleLine1} <br />
+            <span className="hero-gradient-text">{t.hero.titleGradient}</span> <br />
+            {t.hero.titleLine2}
           </h1>
 
           <p className="hero-description">
-            51 Agency designs and develops high-impact digital experiences, intelligent AI software,
-            and mission-critical web applications built for enterprises and ambitious scaleups.
+            {t.hero.description}
           </p>
 
           <div className="hero-cta-group">
@@ -46,8 +47,8 @@ export default function Hero() {
               className="btn btn-primary hero-btn-main"
               onClick={(e) => handleScrollTo(e, 'contact')}
             >
-              <span>Start a Project</span>
-              <ArrowRight size={18} />
+              <span>{t.hero.btnStart}</span>
+              <ArrowRight size={18} className="btn-arrow-icon" />
             </a>
 
             <a
@@ -55,25 +56,25 @@ export default function Hero() {
               className="btn btn-secondary hero-btn-sub"
               onClick={(e) => handleScrollTo(e, 'services')}
             >
-              <span>Explore Our Services</span>
-              <ChevronRight size={18} />
+              <span>{t.hero.btnServices}</span>
+              <ChevronRight size={18} className="btn-arrow-icon" />
             </a>
           </div>
 
           <div className="hero-trust-row">
-            <span className="trust-label">Core Pillars:</span>
+            <span className="trust-label">{t.hero.corePillarsLabel}</span>
             <div className="trust-tags-list">
-              {TRUST_TAGS.map((tag, idx) => (
+              {t.hero.corePillars.map((tag, idx) => (
                 <span key={tag} className="trust-tag-item">
                   {tag}
-                  {idx < TRUST_TAGS.length - 1 && <span className="trust-dot">/</span>}
+                  {idx < t.hero.corePillars.length - 1 && <span className="trust-dot">/</span>}
                 </span>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="hero-visual" aria-hidden="true">
+        <div className="hero-visual" aria-hidden="true" dir="ltr">
           <div className="visual-stage">
             <div className="visual-grid-plate" />
 
@@ -94,8 +95,8 @@ export default function Hero() {
                 <Sparkles size={16} />
               </div>
               <div className="chip-info">
-                <span className="chip-title">AI Engine</span>
-                <span className="chip-stat">Sub-20ms Inference</span>
+                <span className="chip-title">{t.hero.chips.ai.title}</span>
+                <span className="chip-stat">{t.hero.chips.ai.stat}</span>
               </div>
             </div>
 
@@ -104,8 +105,8 @@ export default function Hero() {
                 <Zap size={16} />
               </div>
               <div className="chip-info">
-                <span className="chip-title">Latency Standard</span>
-                <span className="chip-stat">0.24s Global TTI</span>
+                <span className="chip-title">{t.hero.chips.latency.title}</span>
+                <span className="chip-stat">{t.hero.chips.latency.stat}</span>
               </div>
             </div>
 
@@ -114,8 +115,8 @@ export default function Hero() {
                 <ShieldCheck size={16} />
               </div>
               <div className="chip-info">
-                <span className="chip-title">Zero-Trust Security</span>
-                <span className="chip-stat">Enterprise Ready</span>
+                <span className="chip-title">{t.hero.chips.security.title}</span>
+                <span className="chip-stat">{t.hero.chips.security.stat}</span>
               </div>
             </div>
 
@@ -124,8 +125,8 @@ export default function Hero() {
                 <Terminal size={16} />
               </div>
               <div className="chip-info">
-                <span className="chip-title">Clean Architecture</span>
-                <span className="chip-stat">100% Type-Safe</span>
+                <span className="chip-title">{t.hero.chips.code.title}</span>
+                <span className="chip-stat">{t.hero.chips.code.stat}</span>
               </div>
             </div>
 
@@ -137,10 +138,10 @@ export default function Hero() {
 
       <div className="container hero-metrics-container">
         <div className="hero-metrics-grid">
-          {HERO_METRICS.map((metric) => (
+          {t.hero.metrics.map((metric) => (
             <div key={metric.label} className="metric-card">
               <div className="metric-value-row">
-                <span className="metric-value">{metric.value}</span>
+                <span className="metric-value" dir="ltr">{metric.value}</span>
                 <span className="metric-indicator" />
               </div>
               <h3 className="metric-label">{metric.label}</h3>

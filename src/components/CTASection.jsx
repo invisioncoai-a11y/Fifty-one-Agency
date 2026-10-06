@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/cta.css';
 
 export default function CTASection() {
+  const { t } = useLanguage();
+
   const handleScrollToContact = (e) => {
     e.preventDefault();
     const el = document.getElementById('contact');
@@ -22,17 +25,16 @@ export default function CTASection() {
           <div className="cta-content">
             <div className="cta-badge">
               <Sparkles size={14} className="cta-sparkle" />
-              <span>Let's Create Something Extraordinary</span>
+              <span>{t.cta.badge}</span>
             </div>
 
             <h2 className="cta-title">
-              Have an Idea? <br />
-              <span className="cta-gradient-text">Let's Build It Together.</span>
+              {t.cta.titleLine1} <br />
+              <span className="cta-gradient-text">{t.cta.titleGradient}</span>
             </h2>
 
             <p className="cta-desc">
-              Whether you need to architect a new software platform from the ground up, 
-              infuse autonomous AI capabilities, or overhaul an existing web application—we’re ready.
+              {t.cta.desc}
             </p>
 
             <div className="cta-btn-group">
@@ -41,8 +43,8 @@ export default function CTASection() {
                 className="btn btn-primary cta-btn-large"
                 onClick={handleScrollToContact}
               >
-                <span>Start a Project</span>
-                <ArrowRight size={18} />
+                <span>{t.cta.btnStart}</span>
+                <ArrowRight size={18} className="btn-arrow-icon" />
               </a>
 
               <a 
@@ -51,16 +53,16 @@ export default function CTASection() {
                 onClick={handleScrollToContact}
               >
                 <MessageSquare size={18} />
-                <span>Contact Us</span>
+                <span>{t.cta.btnContact}</span>
               </a>
             </div>
 
             <div className="cta-subtext-row">
-              <span className="cta-sub-item">⚡ Guaranteed 24h response time</span>
+              <span className="cta-sub-item">{t.cta.subtext1}</span>
               <span className="cta-sub-bullet">•</span>
-              <span className="cta-sub-item">🔒 Strict Mutual NDA</span>
+              <span className="cta-sub-item">{t.cta.subtext2}</span>
               <span className="cta-sub-bullet">•</span>
-              <span className="cta-sub-item">💼 Direct access to senior architects</span>
+              <span className="cta-sub-item">{t.cta.subtext3}</span>
             </div>
           </div>
         </div>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
-import { PROCESS_STEPS } from '../data/agencyData';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/process.css';
 
 export default function Process() {
   const [activeStep, setActiveStep] = useState(0);
+  const { t } = useLanguage();
 
   return (
     <section id="process" className="process-section">
@@ -12,21 +13,20 @@ export default function Process() {
         <div className="section-header">
           <div className="section-tag">
             <span className="section-tag-dot" />
-            <span>Execution Framework</span>
+            <span>{t.process.tag}</span>
           </div>
           <h2 className="section-title">
-            Our 5-Stage Blueprint <br />
-            from Idea to Launch
+            {t.process.titleLine1} <br />
+            {t.process.titleLine2}
           </h2>
           <p className="section-subtitle">
-            A deterministic, milestone-driven product methodology refined to mitigate risk, 
-            accelerate velocity, and deliver pristine digital assets.
+            {t.process.subtitle}
           </p>
         </div>
 
         <div className="process-steps-container">
           <div className="process-grid">
-            {PROCESS_STEPS.map((item, index) => {
+            {t.process.steps.map((item, index) => {
               const isSelected = activeStep === index;
               return (
                 <div 
@@ -39,7 +39,7 @@ export default function Process() {
                   aria-label={`Step ${item.step}: ${item.name}`}
                 >
                   <div className="step-badge-row">
-                    <span className="step-num-badge">{item.step}</span>
+                    <span className="step-num-badge" dir="ltr">{item.step}</span>
                     <span className="step-tag-pill">{item.name}</span>
                   </div>
 
@@ -47,7 +47,7 @@ export default function Process() {
                   <p className="process-step-desc">{item.description}</p>
 
                   <div className="process-deliverables">
-                    <span className="deliverables-heading">Deliverables:</span>
+                    <span className="deliverables-heading">{t.process.deliverablesHeading}</span>
                     <ul className="deliverables-list">
                       {item.deliverables.map((deliv) => (
                         <li key={deliv} className="deliverable-item">

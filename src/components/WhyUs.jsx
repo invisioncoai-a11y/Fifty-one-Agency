@@ -8,6 +8,7 @@ import {
   HeartHandshake 
 } from 'lucide-react';
 import { WHY_CHOOSE_US_DATA } from '../data/agencyData';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/whyus.css';
 
 const WHY_US_ICONS = {
@@ -20,27 +21,29 @@ const WHY_US_ICONS = {
 };
 
 export default function WhyUs() {
+  const { t } = useLanguage();
+
   return (
     <section id="why-us" className="why-us-section">
       <div className="container">
         <div className="section-header">
           <div className="section-tag">
             <span className="section-tag-dot" />
-            <span>The 51 Advantage</span>
+            <span>{t.whyUs.tag}</span>
           </div>
           <h2 className="section-title">
-            Built for Businesses That Demand <br />
-            Engineering Excellence
+            {t.whyUs.titleLine1} <br />
+            {t.whyUs.titleLine2}
           </h2>
           <p className="section-subtitle">
-            We operate as an elite extension of your technical team, combining strategic design thinking 
-            with resilient code architecture to future-proof your digital investments.
+            {t.whyUs.subtitle}
           </p>
         </div>
 
         <div className="why-us-grid">
-          {WHY_CHOOSE_US_DATA.map((item) => {
-            const Icon = WHY_US_ICONS[item.icon] || Zap;
+          {t.whyUs.items.map((item) => {
+            const staticItem = WHY_CHOOSE_US_DATA.find((w) => w.id === item.id) || {};
+            const Icon = WHY_US_ICONS[staticItem.icon] || Zap;
 
             return (
               <div key={item.id} className="why-card glass-card">

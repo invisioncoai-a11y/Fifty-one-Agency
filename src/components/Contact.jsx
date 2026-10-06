@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { 
   Mail, 
-  MapPin, 
-  MessageSquare, 
+  Phone, 
   Send, 
   AlertCircle, 
   ExternalLink,
-  Linkedin,
-  Twitter,
-  Github,
   Instagram
 } from 'lucide-react';
 import { CONTACT_DETAILS } from '../data/agencyData';
+import { useLanguage } from '../context/LanguageContext';
+import WhatsAppIcon from './icons/WhatsAppIcon';
 import '../styles/contact.css';
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,38 +49,52 @@ export default function Contact() {
         <div className="section-header">
           <div className="section-tag">
             <span className="section-tag-dot" />
-            <span>Direct Channel</span>
+            <span>{t.contact.tag}</span>
           </div>
           <h2 className="section-title">
-            Let's Discuss Your Next <br />
-            Digital Breakthrough
+            {t.contact.titleLine1} <br />
+            {t.contact.titleLine2}
           </h2>
           <p className="section-subtitle">
-            Have a project in mind, need technical consultation, or want an architectural estimate? 
-            Reach out through our direct channels or send a message below.
+            {t.contact.subtitle}
           </p>
         </div>
 
         <div className="contact-layout">
           <div className="contact-info-col">
             <div className="contact-info-card glass-card">
-              <h3 className="contact-info-title">Contact Channels</h3>
+              <h3 className="contact-info-title">{t.contact.channelsCardTitle}</h3>
               <p className="contact-info-desc">
-                We respond within 24 hours. All project consultations include our mutual confidentiality pledge.
+                {t.contact.channelsCardDesc}
               </p>
 
               <div className="channels-list">
                 <a 
-                  href={`mailto:${CONTACT_DETAILS.email}`} 
+                  href={CONTACT_DETAILS.iraqTel} 
                   className="channel-item"
-                  title="Send us an email"
+                  title="Call Iraq office"
                 >
                   <div className="channel-icon-box">
-                    <Mail size={20} />
+                    <Phone size={20} />
                   </div>
                   <div className="channel-details">
-                    <span className="channel-label">Direct Email</span>
-                    <span className="channel-val">{CONTACT_DETAILS.email}</span>
+                    <span className="channel-label">{t.contact.labelIraq}</span>
+                    <span className="channel-val" dir="ltr">{CONTACT_DETAILS.iraqPhone}</span>
+                  </div>
+                  <ExternalLink size={16} className="channel-ext" />
+                </a>
+
+                <a 
+                  href={CONTACT_DETAILS.jordanTel} 
+                  className="channel-item"
+                  title="Call Jordan office"
+                >
+                  <div className="channel-icon-box">
+                    <Phone size={20} />
+                  </div>
+                  <div className="channel-details">
+                    <span className="channel-label">{t.contact.labelJordan}</span>
+                    <span className="channel-val" dir="ltr">{CONTACT_DETAILS.jordanPhone}</span>
                   </div>
                   <ExternalLink size={16} className="channel-ext" />
                 </a>
@@ -90,83 +104,89 @@ export default function Contact() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="channel-item"
-                  title="Chat with us on WhatsApp"
+                  title="Chat with Jordan office on WhatsApp"
                 >
-                  <div className="channel-icon-box channel-whatsapp">
-                    <MessageSquare size={20} />
+                  <div className="channel-icon-box channel-icon-whatsapp">
+                    <WhatsAppIcon size={20} />
                   </div>
                   <div className="channel-details">
-                    <span className="channel-label">WhatsApp Hotline</span>
-                    <span className="channel-val">{CONTACT_DETAILS.whatsapp}</span>
+                    <span className="channel-label">{t.contact.labelWhatsApp}</span>
+                    <span className="channel-val" dir="ltr">{CONTACT_DETAILS.whatsappPhone}</span>
                   </div>
                   <ExternalLink size={16} className="channel-ext" />
                 </a>
 
-                <div className="channel-item non-clickable">
-                  <div className="channel-icon-box channel-location">
-                    <MapPin size={20} />
+                <a 
+                  href={`mailto:${CONTACT_DETAILS.email}`} 
+                  className="channel-item"
+                  title="Send us an email"
+                >
+                  <div className="channel-icon-box">
+                    <Mail size={20} />
                   </div>
                   <div className="channel-details">
-                    <span className="channel-label">Global Presence</span>
-                    <span className="channel-val">{CONTACT_DETAILS.location}</span>
+                    <span className="channel-label">{t.contact.labelEmail}</span>
+                    <span className="channel-val" dir="ltr">{CONTACT_DETAILS.email}</span>
                   </div>
-                </div>
+                  <ExternalLink size={16} className="channel-ext" />
+                </a>
+
+                <a 
+                  href={CONTACT_DETAILS.instagramUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="channel-item"
+                  title="Follow 51 Agency on Instagram"
+                >
+                  <div className="channel-icon-box">
+                    <Instagram size={20} />
+                  </div>
+                  <div className="channel-details">
+                    <span className="channel-label">{t.contact.labelInstagram}</span>
+                    <span className="channel-val">{CONTACT_DETAILS.instagramHandle}</span>
+                  </div>
+                  <ExternalLink size={16} className="channel-ext" />
+                </a>
               </div>
 
               <div className="social-links-block">
-                <span className="social-links-heading">Follow 51 Agency</span>
+                <span className="social-links-heading">{t.contact.followHeading}</span>
                 <div className="social-icons-row">
                   <a 
-                    href={CONTACT_DETAILS.socials.linkedin} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="social-btn"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin size={18} />
-                  </a>
-                  <a 
-                    href={CONTACT_DETAILS.socials.twitter} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="social-btn"
-                    aria-label="Twitter / X"
-                  >
-                    <Twitter size={18} />
-                  </a>
-                  <a 
-                    href={CONTACT_DETAILS.socials.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="social-btn"
-                    aria-label="GitHub"
-                  >
-                    <Github size={18} />
-                  </a>
-                  <a 
-                    href={CONTACT_DETAILS.socials.instagram} 
+                    href={CONTACT_DETAILS.instagramUrl} 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="social-btn"
                     aria-label="Instagram"
+                    title="Instagram @51_agency"
                   >
                     <Instagram size={18} />
+                  </a>
+                  <a 
+                    href={CONTACT_DETAILS.whatsappLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="social-btn"
+                    aria-label="WhatsApp"
+                    title="WhatsApp +962 7 9791 2400"
+                  >
+                    <WhatsAppIcon size={18} />
                   </a>
                 </div>
               </div>
 
               <div className="contact-status-note">
                 <span className="note-pulse" />
-                <span className="note-text">Accepting new enterprise &amp; startup engagements</span>
+                <span className="note-text">{t.contact.statusNote}</span>
               </div>
             </div>
           </div>
 
           <div className="contact-form-col">
             <div className="contact-form-card glass-card">
-              <h3 className="form-card-title">Send a Project Brief</h3>
+              <h3 className="form-card-title">{t.contact.formTitle}</h3>
               <p className="form-card-sub">
-                Fill in your project details to initiate an architectural review.
+                {t.contact.formSub}
               </p>
 
               {submissionStatus === 'coming_soon' ? (
@@ -175,10 +195,9 @@ export default function Contact() {
                     <AlertCircle size={24} className="notice-icon" />
                   </div>
                   <div className="notice-content">
-                    <h4 className="notice-title">Contact Form Integration Coming Soon</h4>
+                    <h4 className="notice-title">{t.contact.noticeTitle}</h4>
                     <p className="notice-body">
-                      Thank you for contacting 51 Agency! This frontend form is currently in preview mode. 
-                      You can send your pre-filled inquiry directly to our team with your default mail client:
+                      {t.contact.noticeBody}
                     </p>
                     <div className="notice-action-row">
                       <button 
@@ -187,14 +206,14 @@ export default function Contact() {
                         className="btn btn-primary btn-sm"
                       >
                         <Mail size={16} />
-                        <span>Send via Email Client</span>
+                        <span>{t.contact.btnSendEmail}</span>
                       </button>
                       <button 
                         type="button" 
                         onClick={() => setSubmissionStatus(null)} 
                         className="btn btn-secondary btn-sm"
                       >
-                        <span>Edit Form</span>
+                        <span>{t.contact.btnEditForm}</span>
                       </button>
                     </div>
                   </div>
@@ -204,7 +223,7 @@ export default function Contact() {
                   <div className="form-grid-2">
                     <div className="form-group">
                       <label htmlFor="contact-name" className="form-label">
-                        Your Name <span className="req">*</span>
+                        {t.contact.labelName} <span className="req">*</span>
                       </label>
                       <input
                         type="text"
@@ -213,14 +232,14 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="e.g. Alex Morgan"
+                        placeholder={t.contact.placeholderName}
                         className="form-input"
                       />
                     </div>
 
                     <div className="form-group">
                       <label htmlFor="contact-email" className="form-label">
-                        Work Email <span className="req">*</span>
+                        {t.contact.labelEmailField} <span className="req">*</span>
                       </label>
                       <input
                         type="email"
@@ -229,7 +248,7 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="alex@company.com"
+                        placeholder={t.contact.placeholderEmail}
                         className="form-input"
                       />
                     </div>
@@ -238,7 +257,7 @@ export default function Contact() {
                   <div className="form-grid-2">
                     <div className="form-group">
                       <label htmlFor="contact-company" className="form-label">
-                        Company / Organization
+                        {t.contact.labelCompany}
                       </label>
                       <input
                         type="text"
@@ -246,14 +265,14 @@ export default function Contact() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        placeholder="e.g. Acme Corp"
+                        placeholder={t.contact.placeholderCompany}
                         className="form-input"
                       />
                     </div>
 
                     <div className="form-group">
                       <label htmlFor="contact-service" className="form-label">
-                        Service Interest
+                        {t.contact.labelService}
                       </label>
                       <select
                         id="contact-service"
@@ -262,20 +281,18 @@ export default function Contact() {
                         onChange={handleChange}
                         className="form-select"
                       >
-                        <option value="Website Development">Website Development</option>
-                        <option value="Web Applications">Web Applications</option>
-                        <option value="Mobile Applications">Mobile Applications</option>
-                        <option value="UI/UX Design">UI/UX Design</option>
-                        <option value="AI Solutions">AI Solutions</option>
-                        <option value="Digital Transformation">Digital Transformation</option>
-                        <option value="Custom Software Development">Custom Software Development</option>
+                        {t.contact.servicesOptions.map((opt) => (
+                          <option key={opt} value={opt}>
+                            {opt}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="contact-message" className="form-label">
-                      Project Overview <span className="req">*</span>
+                      {t.contact.labelOverview} <span className="req">*</span>
                     </label>
                     <textarea
                       id="contact-message"
@@ -284,18 +301,18 @@ export default function Contact() {
                       required
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Briefly describe your objectives, timeline, and current technical state..."
+                      placeholder={t.contact.placeholderOverview}
                       className="form-textarea"
                     />
                   </div>
 
                   <button type="submit" className="btn btn-primary btn-submit-form">
-                    <span>Submit Inquiry</span>
+                    <span>{t.contact.btnSubmit}</span>
                     <Send size={18} />
                   </button>
 
                   <p className="form-disclaimer">
-                    🔒 Your information is confidential and will never be shared with third parties.
+                    {t.contact.disclaimer}
                   </p>
                 </form>
               )}

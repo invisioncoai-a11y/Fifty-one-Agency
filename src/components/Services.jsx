@@ -10,6 +10,7 @@ import {
   ArrowRight 
 } from 'lucide-react';
 import { SERVICES_DATA } from '../data/agencyData';
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/services.css';
 
 const ICON_MAP = {
@@ -23,6 +24,8 @@ const ICON_MAP = {
 };
 
 export default function Services() {
+  const { t } = useLanguage();
+
   const handleScrollToContact = (e) => {
     e.preventDefault();
     const el = document.getElementById('contact');
@@ -39,21 +42,21 @@ export default function Services() {
         <div className="section-header">
           <div className="section-tag">
             <span className="section-tag-dot" />
-            <span>Specialized Capabilities</span>
+            <span>{t.services.tag}</span>
           </div>
           <h2 className="section-title">
-            Architected for Speed, <br />
-            Designed for Impact
+            {t.services.titleLine1} <br />
+            {t.services.titleLine2}
           </h2>
           <p className="section-subtitle">
-            We merge cutting-edge engineering with user psychology to deliver high-performance 
-            digital solutions that solve tangible business problems and outpace competition.
+            {t.services.subtitle}
           </p>
         </div>
 
         <div className="services-grid">
-          {SERVICES_DATA.map((service, index) => {
-            const IconComponent = ICON_MAP[service.icon] || Code2;
+          {t.services.items.map((service, index) => {
+            const staticService = SERVICES_DATA.find((s) => s.id === service.id) || SERVICES_DATA[index] || {};
+            const IconComponent = ICON_MAP[staticService.icon] || Code2;
             const isFeatured = service.id === 'ai-solutions' || service.id === 'custom-software';
 
             return (
@@ -64,7 +67,7 @@ export default function Services() {
                 <div className="service-card-glow" />
 
                 <div className="service-card-header">
-                  <div className={`service-icon-box icon-accent-${service.accent}`}>
+                  <div className={`service-icon-box icon-accent-${staticService.accent || 'gold'}`}>
                     <IconComponent size={24} />
                   </div>
                   <span className="service-card-index">0{index + 1}</span>
@@ -87,7 +90,7 @@ export default function Services() {
                     className="service-link"
                     onClick={handleScrollToContact}
                   >
-                    <span>Discuss Requirements</span>
+                    <span>{t.services.btnDiscuss}</span>
                     <ArrowRight size={16} className="service-link-arrow" />
                   </a>
                 </div>

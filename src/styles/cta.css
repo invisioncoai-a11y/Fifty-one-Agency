@@ -6,13 +6,13 @@
 
 .cta-banner {
   position: relative;
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, rgba(13, 17, 26, 0.95) 75%);
-  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.18) 0%, rgba(10, 10, 10, 0.95) 75%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: var(--radius-xl);
   padding: 70px 40px;
   text-align: center;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 50px rgba(212, 175, 55, 0.1);
 }
 
 .cta-ambient-glow {
@@ -22,7 +22,7 @@
   transform: translateX(-50%);
   width: 500px;
   height: 250px;
-  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -44,15 +44,15 @@
   gap: 8px;
   padding: 6px 16px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.25);
   font-size: 0.84rem;
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
   font-family: var(--font-mono);
 }
 
 .cta-sparkle {
-  color: var(--accent-cyan);
+  color: var(--accent-primary);
 }
 
 .cta-title {
@@ -64,7 +64,7 @@
 }
 
 .cta-gradient-text {
-  background: linear-gradient(135deg, #ffffff 30%, #818cf8 70%, #38bdf8 100%);
+  background: linear-gradient(135deg, #ffffff 30%, #E5CF83 70%, #D4AF37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

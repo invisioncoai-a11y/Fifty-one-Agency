@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
-import { BRAND_CONFIG, NAVIGATION_LINKS } from '../data/agencyData';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 import '../styles/navbar.css';
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+
+  const navItems = [
+    { key: 'home', name: t.nav.home, href: '#hero' },
+    { key: 'services', name: t.nav.services, href: '#services' },
+    { key: 'about', name: t.nav.about, href: '#about' },
+    { key: 'whyUs', name: t.nav.whyUs, href: '#why-us' },
+    { key: 'process', name: t.nav.process, href: '#process' },
+    { key: 'capabilities', name: t.nav.capabilities, href: '#capabilities' },
+    { key: 'contact', name: t.nav.contact, href: '#contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,7 +28,7 @@ export default function Navbar() {
         setIsScrolled(false);
       }
 
-      const sections = NAVIGATION_LINKS.map(link => link.href.substring(1));
+      const sections = ['hero', 'services', 'about', 'why-us', 'process', 'capabilities', 'contact'];
       const scrollPosition = window.scrollY + 140;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -56,23 +68,22 @@ export default function Navbar() {
           href="#hero" 
           className="navbar-brand"
           onClick={(e) => handleNavClick(e, '#hero')}
-          aria-label="51 Agency Home"
+          aria-label={t.nav.homeAria}
         >
-          <div className="brand-logo-badge">
-            <span className="brand-logo-number">{BRAND_CONFIG.shortName}</span>
-          </div>
-          <span className="brand-logo-text">
-            51 <span className="brand-accent">AGENCY</span>
-          </span>
+          <img 
+            src="/51Agency-Logo.png" 
+            alt="51 Agency" 
+            className="navbar-logo-img" 
+          />
         </a>
 
         <nav className="navbar-nav desktop-only" aria-label="Main Navigation">
           <ul className="nav-list">
-            {NAVIGATION_LINKS.map((link) => {
+            {navItems.map((link) => {
               const sectionId = link.href.substring(1);
               const isActive = activeSection === sectionId;
               return (
-                <li key={link.name} className="nav-item">
+                <li key={link.key} className="nav-item">
                   <a
                     href={link.href}
                     className={`nav-link ${isActive ? 'active' : ''}`}
@@ -88,34 +99,38 @@ export default function Navbar() {
         </nav>
 
         <div className="navbar-actions desktop-only">
+          <LanguageSwitcher />
           <a
             href="#contact"
             className="btn btn-primary nav-cta-btn"
             onClick={(e) => handleNavClick(e, '#contact')}
           >
-            <span>Start a Project</span>
+            <span>{t.nav.startProject}</span>
             <ArrowUpRight size={16} />
           </a>
         </div>
 
-        <button
-          className="mobile-menu-toggle mobile-only"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="mobile-header-actions mobile-only">
+          <LanguageSwitcher />
+          <button
+            className="mobile-menu-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       <div className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-nav-inner">
           <ul className="mobile-nav-list">
-            {NAVIGATION_LINKS.map((link) => {
+            {navItems.map((link) => {
               const sectionId = link.href.substring(1);
               const isActive = activeSection === sectionId;
               return (
-                <li key={link.name} className="mobile-nav-item">
+                <li key={link.key} className="mobile-nav-item">
                   <a
                     href={link.href}
                     className={`mobile-nav-link ${isActive ? 'active' : ''}`}
@@ -135,12 +150,12 @@ export default function Navbar() {
               className="btn btn-primary btn-full-width"
               onClick={(e) => handleNavClick(e, '#contact')}
             >
-              <span>Start a Project</span>
+              <span>{t.nav.startProject}</span>
               <ArrowUpRight size={18} />
             </a>
             <div className="mobile-status-pill">
               <span className="status-dot"></span>
-              <span>Available for New Projects</span>
+              <span>{t.nav.availableForProjects}</span>
             </div>
           </div>
         </div>

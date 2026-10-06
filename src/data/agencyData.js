@@ -12,18 +12,18 @@ export const BRAND_CONFIG = {
 };
 
 export const CONTACT_DETAILS = {
-  email: "hello@51agency.com",
-  secondaryEmail: "partnerships@51agency.com",
-  phone: "+1 (555) 019-5151",
-  whatsapp: "+1 (555) 019-5151",
-  whatsappLink: "https://wa.me/15550195151",
-  location: "San Francisco, CA • Remote Global",
-  businessHours: "Mon - Fri: 9:00 AM - 6:00 PM (EST)",
+  email: "contact@51agency.co",
+  iraqPhone: "+964 777 301 2402",
+  iraqTel: "tel:+9647773012402",
+  jordanPhone: "+962 7 9791 2400",
+  jordanTel: "tel:+962797912400",
+  whatsappPhone: "+962 7 9791 2400",
+  whatsappLink: "https://wa.me/962797912400?text=Hello%2051%20Agency%2C%20I%20would%20like%20to%20discuss%20a%20project.",
+  instagramUrl: "https://www.instagram.com/51_agency?stkn=MXZ3cmlvcm13d25hbQ==",
+  instagramHandle: "@51_agency",
   socials: {
-    linkedin: "https://linkedin.com/company/51agency",
-    twitter: "https://twitter.com/51agency",
-    github: "https://github.com/51agency",
-    instagram: "https://instagram.com/51agency",
+    instagram: "https://www.instagram.com/51_agency?stkn=MXZ3cmlvcm13d25hbQ==",
+    whatsapp: "https://wa.me/962797912400?text=Hello%2051%20Agency%2C%20I%20would%20like%20to%20discuss%20a%20project.",
   },
 };
 
